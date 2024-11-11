@@ -1,4 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+export const addTodo = createAsyncThunk('todos/addTodo', async (newTodo) => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newTodo),
+  });
+  return response.json();
+});
 
 const todosSlice = createSlice({
   name: 'todos',
@@ -28,3 +39,4 @@ export const { setTodos, setLoading, setFailed, sortTodosByIdDesc } = todosSlice
 
 // Reducer
 export default todosSlice.reducer;
+

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { sortTodosByIdDesc } from "../redux/todoSlice";
+import { sortTodosByIdDesc, addTodo } from "../redux/todoSlice";
 
 import UserDetails from "./UserDetails";
 import PostsList from "./PostsList";
@@ -31,7 +31,7 @@ const User = ({ selectedUser, posts, postStatus, todosStatus, todos, handleFetch
   };
 
   return (
-    <div className='md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll mx-5 max-w-3xl bg-gray-200 shadow-md py-5'>
+    <div className='md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll mx-5 max-w-xl bg-gray-200 shadow-md py-5'>
       {selectedUser && (
         <div className='max-w-lg mx-auto'>
           <UserDetails
@@ -62,7 +62,9 @@ const User = ({ selectedUser, posts, postStatus, todosStatus, todos, handleFetch
           <div className={showTodos ? 'max-w-lg -mx-5 bg-gray-200 shadow-md py-5' : 'hidden'}>
             <TodosList
                 todos={todos}
-                todosStatus={todosStatus} 
+                todosStatus={todosStatus}
+                addTodo={addTodo}
+                selectedUser={selectedUser}
             />
           </div>
         </div>
