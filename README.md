@@ -5,7 +5,7 @@ Prueba: **DESARROLLADOR JR**
 
 Deadline: **1 día**
 
-Nombre: 
+Nombre: Gerardo Antonio Ruelas Hernández
 
 ------
 ## Clona y crea tu repositorio para la evaluación ##
