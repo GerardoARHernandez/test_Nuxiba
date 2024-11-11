@@ -2,7 +2,7 @@
 const UserList = ({status, handleSelectUser, users}) => {
   return (
     <>
-      <div className='md:w-1/2 lg:w-2/5 mx-5 max-w-2xl bg-gray-300 shadow'>
+      <div className='md:w-1/2 lg:w-2/5 mx-5 max-w-2xl bg-gray-300 shadow mb-10'>
       
         {status === 'loading' && 
           <p 
