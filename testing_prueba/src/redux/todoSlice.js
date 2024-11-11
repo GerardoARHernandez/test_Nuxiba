@@ -15,7 +15,7 @@ const todosSlice = createSlice({
   name: 'todos',
   initialState: {
     todos: [],
-    status: 'idle', // 'idle' cuando no se está cargando, 'loading' cuando se están cargando, 'succeeded' o 'failed' según el resultado
+    status: 'idle', 
   },
   reducers: {
     setTodos: (state, action) => {
