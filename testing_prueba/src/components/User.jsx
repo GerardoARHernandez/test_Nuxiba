@@ -1,16 +1,29 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { sortTodosByIdDesc, addTodo } from "../redux/todoSlice";
+import { fetchPostsWithComments } from '../redux/postSlice';
+
 
 import UserDetails from "./UserDetails";
 import PostsList from "./PostsList";
 import TodosList from "./TodosList";
 
-const User = ({ selectedUser, posts, postStatus, todosStatus, todos, handleFetchPosts }) => {
+const User = ({ selectedUser}) => {
   const [showPost, setShowPost] = useState(false);
   const [showTodos, setShowTodos] = useState(false);
+
+  const posts = useSelector((state) => state.posts.posts);
+  const postStatus = useSelector((state) => state.posts.status);
+
+  const todos = useSelector((state) => state.todos.todos);
+  const todosStatus = useSelector((state) => state.todos.status);
+
   const dispatch = useDispatch();
 
+  const handleFetchPosts = (userId) => {
+    dispatch(fetchPostsWithComments(userId));
+  };
+  
   useEffect(() => {
     setShowPost(false);
     setShowTodos(false);
@@ -29,6 +42,7 @@ const User = ({ selectedUser, posts, postStatus, todosStatus, todos, handleFetch
     }
     setShowTodos(!showTodos);
   };
+
 
   return (
     <div className='md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll mx-5 max-w-xl bg-gray-200 shadow-md py-5'>

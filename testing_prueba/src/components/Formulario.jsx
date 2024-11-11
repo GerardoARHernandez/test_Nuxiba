@@ -52,7 +52,7 @@ const Formulario = ({ selectedUser }) => {
       {savedTodo && (
         <div className="bg-white rounded-lg p-8 shadow-md mt-4">
           <p className="text-lg">
-            Nueva Tarea: {savedTodo.title} - <strong className={`font-bold ${savedTodo.completed ? 'text-green-700' : 'text-red-500'}`}>
+            Nueva Tarea: {savedTodo.title} - <strong className={`font-bold ${savedTodo.completed ? 'text-green-700' : 'text-yellow-500'}`}>
               {savedTodo.completed ? 'Completado' : 'Pendiente'}
             </strong>
           </p>

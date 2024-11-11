@@ -1,9 +1,7 @@
 import  { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from './redux/usersSlice';
-import { fetchPostsWithComments } from './redux/postSlice';
 import { setLoading, setTodos, setFailed } from './redux/todoSlice';
-
 
 import User from './components/User';
 import UserList from './components/UserList';
@@ -12,12 +10,6 @@ function App() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users);
   const status = useSelector((state) => state.users.status);
-
-  const posts = useSelector((state) => state.posts.posts);
-  const postStatus = useSelector((state) => state.posts.status);
-
-  const todos = useSelector((state) => state.todos.todos);
-  const todosStatus = useSelector((state) => state.todos.status);
 
   const [selectedUser, setSelectedUser] = useState(null);
   
@@ -44,12 +36,6 @@ function App() {
     }
   };
 
-
-  // Función para cargar los posts con comentarios del usuario seleccionado
-  const handleFetchPosts = (userId) => {
-    dispatch(fetchPostsWithComments(userId));
-  };
-
   return (
     <>
       <h1 className='text-center font-bold text-5xl my-3 py-10'>Lista de Usuarios</h1>
@@ -63,11 +49,6 @@ function App() {
         
         <User 
           selectedUser={selectedUser}
-          posts={posts}
-          postStatus={postStatus}
-          todos={todos}
-          todosStatus={todosStatus}
-          handleFetchPosts={handleFetchPosts}
         />
 
       </div>
